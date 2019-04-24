@@ -14,9 +14,17 @@ void loop() {
   
   for (int i=9 ; i <= 13 ; i++)
   {
+    if(i>9){
        digitalWrite( i , HIGH) ;
        delay (200) ;
        digitalWrite( i , LOW);
        delay (200) ;
+    }else{
+      tone(9,220);    // inicia el zumbido
+      delay(200);                    
+      noTone(9);               // lo detiene a los dos segundos
+      delay(100);
+    }
+      
   }
 }
