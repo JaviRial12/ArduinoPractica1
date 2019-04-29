@@ -1,0 +1,27 @@
+#define trigPin 2
+     #define echoPin 3
+     #define led 13
+
+     void setup()
+        {   
+            pinMode(trigPin, OUTPUT);
+            pinMode(echoPin, INPUT); 
+            pinMode(led, OUTPUT);
+        }
+
+     void loop()
+        {   long duracion, distancia ;
+            digitalWrite(trigPin, LOW);           
+         	delayMicroseconds(2);              
+            digitalWrite(trigPin, HIGH);       
+            delayMicroseconds(10);             
+            digitalWrite(trigPin, LOW);        
+         duracion = pulseIn(echoPin, HIGH) ;
+            distancia = duracion / 2 / 29.1  ;
+            int Limite = 10 ;                  
+            if ( distancia < Limite)
+                 digitalWrite ( led , HIGH) ;
+            else
+                 digitalWrite( led , LOW) ;
+            delay (500) ;                  
+        }
