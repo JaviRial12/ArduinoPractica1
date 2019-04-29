@@ -1,0 +1,35 @@
+#include <Servo.h> 
+
+Servo myservo;
+
+const int buttonPin = 2;
+int val=0;
+int buttonState = 0;
+int su=1;
+
+void setup() 
+{ 
+  myservo.attach(9);
+  pinMode(buttonPin, INPUT);  
+    Serial.begin(9600);
+     
+} 
+
+void loop() 
+{ 
+  buttonState = digitalRead(buttonPin);
+  Serial.println(buttonState);
+  if (buttonState == LOW) {
+    
+    if(val<10) { 
+      su=1;    
+     } 
+    else if(val>170){
+      su=-1;
+    }
+    val = val+(2*su); 
+    
+  }
+  myservo.write(val);
+  delay(10);
+}
